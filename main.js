@@ -4,6 +4,10 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { DeviceOrientationControls } from "./deviceorientation";
 
+
+
+
+
 console.log(DeviceOrientationControls)
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75,
@@ -35,13 +39,16 @@ const hlight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
 scene.add( hlight );
 
 // const controls = new OrbitControls( camera, renderer.domElement );
-// controls.update();
+// 
 
 const controls = new DeviceOrientationControls( camera );
+controls.connect();
+
+controls.update();
+console.log(controls)
 
 const loader = new GLTFLoader();
 const textureLoader = new THREE.TextureLoader();
-
 
 
 loader.load(
